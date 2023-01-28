@@ -41,18 +41,14 @@ int main(void) {
 	// 課題1番
 	// 課題0番で使っている配列をvectorコンテナvec1に変更、0~1.0の範囲の乱数で初期化する。なお、初期化は通常どおり添え字を用いたループ処理で行うこと。
 	std::vector<VecType> vec1(std::begin(issueArray), std::end(issueArray));
-	const auto vec1Size = sizeof(issueArray) / sizeof(VecType);
+	const auto vec1Size = sizeof(issueArray) / sizeof(decltype(*issueArray));
 	for (int i = 0; i < vec1Size; ++i) {
 		vec1[i] = dist1(engine);
-
-		// 一行に纏めるなら
-		// std::uniform_real_distribution<>(MinRange, MaxRange)(engine)
 	}
 
 	// 以下範囲forで初期化する場合
 	/*
 	for (const auto& i : issueArray) {
-		dist1 = std::uniform_real_distribution<>(MinRange, MaxRange);
 		vec1.emplace_back(dist1(engine));
 	}
 	*/
